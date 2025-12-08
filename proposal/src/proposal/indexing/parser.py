@@ -26,11 +26,12 @@ class ProposalParser:
                 sections: List[str] = re.split(r'\n{2,}', text)
 
                 for sec in sections:
-                    documents.append(Document(page_content=sec, metadata={'page_number': page_number}))
+                    if sec:
+                        documents.append(Document(page_content=sec, metadata={'page_number': page_number}))
                 
                 page_number += 1
     
-        except PdfReadError as e:
+        except (PdfReadError, FileNotFoundError) as e:
             logger.exception(f"PDF extraction failed for pdf : {pdf_path} with exception: {e}")
             
         logger.info(f"Extraction completed with total pages: {page_number} and documents: {len(documents)}")

@@ -51,3 +51,8 @@ AI Business Proposal Generator is an intelligent system that creates customized 
     ```bash
     poetry env activate
     ```
+
+4. **Run pytest tests**:
+    ```bash
+    poetry run test
+    ```
