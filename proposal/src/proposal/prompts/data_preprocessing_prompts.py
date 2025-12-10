@@ -7,7 +7,7 @@ executive_summary_ext_prompt = PromptTemplate.from_template(
     executive summary in a consulting proposal.
 
     Executive summary indicators:
-    - About the firm and what the firm does
+    - Good Information about the firm and what the firm does
     - High-level overview of the client’s goals or needs
     - High-level description of the provider and solution
     - Explains value, outcomes, and strategic approach

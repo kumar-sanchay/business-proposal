@@ -27,7 +27,7 @@ class ProposalParser:
 
                 for sec in sections:
                     if sec:
-                        documents.append(Document(page_content=sec, metadata={'page_number': page_number}))
+                        documents.append(Document(page_content=sec, metadata={'page_num': page_number}))
                 
                 page_number += 1
     
