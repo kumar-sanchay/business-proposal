@@ -10,7 +10,9 @@ from proposal.core.logging_setup import setup_logging
 
 load_dotenv()
 setup_logging()
-from proposal.indexing.sections.executive_section import ExecutiveSectionChain
+from proposal.indexing.sections.executive_summary import ExecutiveSummary
+from proposal.indexing.sections.problem_statement import ProblemStatement
+from proposal.indexing.sections.approach import Approach
 
 
 logger = logging.getLogger(__name__)
@@ -36,7 +38,9 @@ def main():
 
     chain = (
             {"proposal_document": RunnablePassthrough()}
-            | ExecutiveSectionChain()
+            | ExecutiveSummary()
+            | ProblemStatement()
+            | Approach()
     )
 
     documents = chain.invoke(documents)
