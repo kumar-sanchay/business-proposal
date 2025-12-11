@@ -10,9 +10,12 @@ from proposal.core.logging_setup import setup_logging
 
 load_dotenv()
 setup_logging()
+
 from proposal.indexing.sections.executive_summary import ExecutiveSummary
 from proposal.indexing.sections.problem_statement import ProblemStatement
 from proposal.indexing.sections.approach import Approach
+from proposal.indexing.sections.deliverable import Deliverable
+from proposal.indexing.sections.pricing_and_timeline import PricingAndTimeline
 
 
 logger = logging.getLogger(__name__)
@@ -41,7 +44,9 @@ def main():
             | ExecutiveSummary()
             | ProblemStatement()
             | Approach()
-    )
+            | Deliverable()
+            | PricingAndTimeline()
+        )
 
     documents = chain.invoke(documents)
 

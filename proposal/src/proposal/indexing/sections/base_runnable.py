@@ -19,8 +19,7 @@ class BaseRunnable(Runnable):
 
         chain_with_retry = retry.RunnableRetry(
             bound=chain,
-            max_retries=5,
-            wait=lambda: 60
+            max_retries=5
         )
 
         return chain_with_retry

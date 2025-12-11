@@ -80,3 +80,61 @@ approach_ext_prompt = PromptTemplate.from_template(
     {context}
     """
 )
+
+
+deliverable_ext_prompt = PromptTemplate.from_template(
+    """
+    You are a strict classifier.
+
+    Your task: Determine whether the provided section text is acting as a *Deliverables* section in a consulting business proposal.
+
+    A section IS a "Deliverables" section if it:
+    - Lists tangible outputs the consulting team will provide.
+    - Describes final artifacts such as reports, documents, roadmaps, dashboards, analysis decks, frameworks, tools, or implementation assets.
+    - Specifies measurable or concrete items that the client will receive at the end of the engagement.
+    - Mentions outputs that can be handed over, presented, or delivered.
+
+    A section is NOT a "Deliverables" section if it:
+    - Describes the approach, methodology, or activities performed during the project.
+    - Explains the process, steps, or phases of work.
+    - States goals, objectives, scope, timeline, or milestones.
+    - Covers pricing, assumptions, risks, or team information.
+    - Provides background information or business context.
+
+    You MUST follow the output format:
+    - Output **only** one word: `YES` if the text is a deliverables section, otherwise `NO`.
+    - No explanation. No additional words. No punctuation.
+
+    Section Context:
+    {context}
+    """
+)
+
+
+pricing_and_timeline = PromptTemplate.from_template(
+    """
+    You are a strict classifier.
+
+    Your task: Determine whether the provided section text is acting as a *Pricing & Timeline* section in a consulting business proposal.
+
+    A section IS a "Pricing & Timeline" section if it:
+    - Mentions project cost, fees, pricing models, billing structure, or payment terms.
+    - Includes cost breakdowns, rate cards, hourly/daily rates, fixed fees, or commercial terms.
+    - Describes project duration, timeline, schedule, phases with dates, or delivery deadlines.
+    - Explains how and when payments correspond to project phases or milestones.
+
+    A section is NOT a "Pricing & Timeline" section if it:
+    - Describes the approach, methodology, or work plan.
+    - Lists deliverables, outputs, or artifacts.
+    - States goals, scope, assumptions, risks, or team details.
+    - Provides company background or general context without referring to cost or time.
+    - Describes benefits, outcomes, or technical explanations.
+
+    You MUST follow the output format:
+    - Output **only** one word: `YES` if the text is a Pricing & Timeline section, otherwise `NO`.
+    - No explanation. No additional words. No punctuation.
+    
+    Section Context:
+    {context}
+    """
+)
