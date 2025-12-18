@@ -8,6 +8,7 @@ from langchain_community.vectorstores.chroma import Chroma
 from proposal.indexing.parser import ProposalParser
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 from proposal.core.logging_setup import setup_logging
+from proposal.core.embeddings import get_bge_embeddings
 
 load_dotenv()
 setup_logging()
@@ -35,15 +36,9 @@ def main():
     logger.debug(f"Document Data: {documents[:2]}")
 
 
-    bge_embedding = HuggingFaceBgeEmbeddings(
-        model_name="BAAI/bge-large-en-v1.5",
-        model_kwargs={"device": "cpu"},
-        encode_kwargs={"normalize_embeddings": True}
-    )
-
     vectorstore = Chroma.from_documents(
         documents=documents,
-        embedding=bge_embedding,
+        embedding=get_bge_embeddings(),
         collection_name=os.getenv('CHROMA_DB_COLLECTION_NAME'),
         persist_directory=os.getenv('CHROMADB_DIRECTORY')
     )
