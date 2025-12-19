@@ -19,7 +19,7 @@ def get_document_grading_chain(llm: BaseChatModel) -> RunnableSequence:
     grade_prompt = ChatPromptTemplate.from_messages(
         [
             ("system", system_prompt),
-            ("human", "Retrieved Documents: {document}\n\nUser's requirement: {requirement}\n\nProposal section: {section}")
+            ("human", "Retrieved Document: {document}\n\nUser's requirement: {requirement}\n\nProposal section: {section}")
         ]
     )
 
