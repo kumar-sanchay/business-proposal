@@ -13,4 +13,4 @@ class DocumentSearchQuery(BaseModel):
     """
         Queries which will help to websearch for getting the documents
     """
-    search_queries: List[str] = Field("1-3 search queries for researching about the consulting proposal section")
+    search_queries: List[str] = Field("1-3 search queries list for researching")

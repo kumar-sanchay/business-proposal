@@ -1,0 +1,5 @@
+RETRIEVE = "retrieve"
+GRADE_DOCUMENTS = "grade_documents"
+GENERATE = "generate"
+WEBSEARCH_CLIENT = "websearch_client"
+WEBSEARCH_DOCUMENT = "websearch_document"
