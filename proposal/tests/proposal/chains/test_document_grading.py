@@ -16,6 +16,7 @@ def test_get_document_grading_chain_returns_runnable(llm):
     assert isinstance(chain, RunnableSequence)
 
 
-def test_grading_chain_with_structured_output(llm):
+def test_structured_output_is_getting_attached(llm):
+    assert llm.structured_schema is None
     chain = get_document_grading_chain(llm)
     assert llm.structured_schema is GradeDocuments
