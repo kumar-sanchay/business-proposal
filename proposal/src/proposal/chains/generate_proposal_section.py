@@ -1,5 +1,5 @@
 from langchain_core.language_models.chat_models import BaseChatModel
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 
 def generate_proposal_section(llm: BaseChatModel):
@@ -85,6 +85,7 @@ def generate_proposal_section(llm: BaseChatModel):
     query_prompt = ChatPromptTemplate.from_messages(
         [
             ("system", system_prompt),
+            MessagesPlaceholder(variable_name='messages'),
             ("human", human_prompt)
         ]
     )

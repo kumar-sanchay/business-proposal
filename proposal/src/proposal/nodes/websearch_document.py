@@ -21,7 +21,8 @@ def get_websearch_document_node(llm: BaseChatModel, proposal_section: str, tavil
 
         doc_search_queries: DocumentSearchQuery = get_section_search_queries(llm).invoke({
             'proposal_section': proposal_section,
-            'industry': client_industry
+            'industry': client_industry,
+            'messages': state['messages']
         })
 
         logger.info(f"Generated {len(doc_search_queries.search_queries)} search queries for section {proposal_section}.")

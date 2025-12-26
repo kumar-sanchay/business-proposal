@@ -31,7 +31,8 @@ def get_generate_proposal_section_node(llm: BaseChatModel, proposal_section: str
                 'client_name': state['user_requirement']['client_info']['client_name'],
                 'industry': state['user_requirement']['client_info']['industry'],
                 'documents': format_docs(state['documents']),
-                'client_websearch': format_docs(state['client_websearch'])
+                'client_websearch': format_docs(state['client_websearch']),
+                'messages': state['messages']
             }
         )
 

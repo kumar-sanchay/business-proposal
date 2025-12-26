@@ -1,5 +1,5 @@
 from langchain_core.language_models.chat_models import BaseChatModel
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 from proposal.core.schemas import DocumentSearchQuery
 
@@ -17,11 +17,13 @@ def get_section_search_queries(llm: BaseChatModel):
         3) Be specific and actionable, not generic theory
         4) Focus on section-level examples, not full proposals or general concepts
         5) It should be a valid consulting proposal section example not an introduction
+        6) Don't generate search queries which are already generated and can be view in messages below.
     """
 
     query_prompt = ChatPromptTemplate.from_messages(
         [
             ("system", system_prompt),
+            MessagesPlaceholder(variable_name='messages'),
             ("human", "Section name: {proposal_section}\n\nClient's Industry: {industry}")
         ]
     )

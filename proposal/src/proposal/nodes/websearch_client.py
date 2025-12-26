@@ -23,7 +23,8 @@ def get_websearch_client_node(llm: BaseChatModel, tavily: TavilySearch):
             doc_search_queries: DocumentSearchQuery = get_client_search_queries(llm).invoke(
                 {
                     'client_name': client_name,
-                    'industry': client_industry
+                    'industry': client_industry,
+                    'messages': state['messages']
                 }
             )
 

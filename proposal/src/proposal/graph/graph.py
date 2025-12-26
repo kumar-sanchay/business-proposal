@@ -16,12 +16,10 @@ from proposal.indexing.retriever import get_retriever
 
 
 
-def build_graph():
+def build_graph(user_requirement: UserRequirement, proposal_section: str = "Executive Summary"):
     llm = get_llm()
     tavily_search = TavilySearch(max_results=2)
     retriever = get_retriever()
-
-    proposal_section = "Executive Summary"
 
     graph = StateGraph(GraphState)
     graph.add_node(constants.RETRIEVE, get_retriever_node(retriever=retriever))
@@ -55,43 +53,44 @@ def build_graph():
     app = graph.compile()
     # app.get_graph().draw_mermaid_png(output_file_path="test_graph.png")
     
-    test_user_requirement: UserRequirement = {
-        "problem_statement": (
-            "The client is struggling with slow and inconsistent creation of "
-            "custom consulting proposals, leading to longer sales cycles and "
-            "reduced win rates."
-        ),
-        "client_info": {
-            "client_name": "Acme Financial Services",
-            "industry": "Banking and Financial Services"
-        },
-        "proposal_goal": (
-            "Design and implement an AI-powered consulting proposal generator "
-            "that can create high-quality, client-specific proposal sections "
-            "using internal knowledge and external research."
-        ),
-        "approach": (
-            "Leverage Retrieval-Augmented Generation (RAG) with a modular "
-            "LangGraph-based workflow. Use vector databases for internal content, "
-            "web search for external insights, and LLM-based scoring and refinement "
-            "for proposal sections."
-        ),
-        "timeline": "8–10 weeks including discovery, implementation, testing, and rollout",
-        "scope_exclusions": (
-            "Does not include CRM integration, UI/UX design for a sales portal, "
-            "or long-term model fine-tuning beyond initial deployment."
-        ),
-        "budget_range": "USD 50,000 – 75,000",
-        "technical_depth": "Medium to High (target audience includes technical decision-makers)"
-    }
+    # test_user_requirement: UserRequirement = {
+    #     "problem_statement": (
+    #         "The client is struggling with slow and inconsistent creation of "
+    #         "custom consulting proposals, leading to longer sales cycles and "
+    #         "reduced win rates."
+    #     ),
+    #     "client_info": {
+    #         "client_name": "Acme Financial Services",
+    #         "industry": "Banking and Financial Services"
+    #     },
+    #     "proposal_goal": (
+    #         "Design and implement an AI-powered consulting proposal generator "
+    #         "that can create high-quality, client-specific proposal sections "
+    #         "using internal knowledge and external research."
+    #     ),
+    #     "approach": (
+    #         "Leverage Retrieval-Augmented Generation (RAG) with a modular "
+    #         "LangGraph-based workflow. Use vector databases for internal content, "
+    #         "web search for external insights, and LLM-based scoring and refinement "
+    #         "for proposal sections."
+    #     ),
+    #     "timeline": "8–10 weeks including discovery, implementation, testing, and rollout",
+    #     "scope_exclusions": (
+    #         "Does not include CRM integration, UI/UX design for a sales portal, "
+    #         "or long-term model fine-tuning beyond initial deployment."
+    #     ),
+    #     "budget_range": "USD 50,000 – 75,000",
+    #     "technical_depth": "Medium to High (target audience includes technical decision-makers)"
+    # }
     initial_state = GraphState(
-        user_requirement=test_user_requirement,
+        user_requirement=user_requirement,
         documents=[],
         client_websearch=[],
         generated_section=""
     )
 
-    result = app.invoke(initial_state)
+    result: GraphState = app.invoke(initial_state)
+    return result.generated_section
 
 
 if __name__ == '__main__':
