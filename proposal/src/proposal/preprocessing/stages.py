@@ -17,6 +17,12 @@ class Stages:
 
 class ProposalRelevanceCheck(Stages):
 
+    """
+    This stage evaluates the relevance of a proposal document based on the presence of key sections and overall structure.
+    It assigns scores based on weighted keywords and structural elements like titles, lists, and tables.
+    If the total score exceeds a predefined threshold, the document is considered relevant.
+    """
+
     def __init__(self, elements: List[Element]) -> List[Element]:
         super().__init__()
         self.elements = elements
@@ -43,7 +49,7 @@ class ProposalRelevanceCheck(Stages):
 
         if title_count > 5:
             structure_score += 3
-        if list_count / max(len(self.elements), 1) > 0.2:
+        if list_count / max(len(self.elements), 1) > 0.2:  # Check if more than 20% are lists
             structure_score += 2
         if table > 0:
             structure_score += 2
@@ -52,4 +58,3 @@ class ProposalRelevanceCheck(Stages):
         LOGGER.info(f"Total score: {keyword_score + structure_score}")
         LOGGER.info("Completed Proposal Relevance Check")
         return self.elements if (keyword_score + structure_score) > PROPOSAL_RELEVANCE_THRESHOLD else []
-        
