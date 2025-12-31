@@ -4,7 +4,7 @@
 
 An intelligent, agent-driven system for generating **high-quality consulting and service proposals** that align with real-world industry standards.
 
-Unlike generic AI writing tools, this platform **automatically researches similar proposals, client context, and industry-specific practices** before generating content. The result is professional, human-like proposals that follow the **correct tone, structure, and expectations of the target industry**—without requiring manual research from the user.
+Unlike generic AI writing tools, this platform **automatically researches similar proposals, client context, and industry-specific practices** before generating content. The result is professional, human-like proposals that follow the **correct tone, structure, and expectations of the target industry** without requiring manual research from the user.
 
 ---
 
