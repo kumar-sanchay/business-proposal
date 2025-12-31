@@ -97,3 +97,30 @@ This ensures every proposal is **context-aware, industry-aligned, and client-spe
 ## 📄 License
 
 MIT License
+
+ ---
+
+## 🖼 Screenshots
+
+### Landing Page
+<p align="center">
+  <img src="media/images/form1.PNG" width="800" />
+</p>
+<p align="center">
+  <img src="media/images/form2.PNG" width="800" />
+</p>
+
+
+### Running Agent
+<p align="center">
+  <img src="media/images/generating.PNG" width="800" />
+</p>
+
+
+### Sample Generated Proposal
+<p align="center">
+  <img src="media/images/output1.PNG" width="800" />
+</p>
+<p align="center">
+  <img src="media/images/output2.PNG" width="800" />
+</p>
