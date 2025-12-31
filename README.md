@@ -1,3 +1,5 @@
+👀 **Check out the awesome app screenshots below!** 
+
 # AI Consulting & Service Proposal Generator
 
 An intelligent, agent-driven system for generating **high-quality consulting and service proposals** that align with real-world industry standards.
@@ -64,6 +66,7 @@ This ensures every proposal is **context-aware, industry-aligned, and client-spe
 - **Environment Configuration**: Python-dotenv  
 - **Web Access & Search**: Tavily
 - **UI**: Streamlit
+- **Observability**: LangSmith
 
 ---
 
@@ -94,12 +97,6 @@ This ensures every proposal is **context-aware, industry-aligned, and client-spe
 
 ---
 
-## 📄 License
-
-MIT License
-
- ---
-
 ## 🖼 Screenshots
 
 ### Landing Page
@@ -124,3 +121,12 @@ MIT License
 <p align="center">
   <img src="media/images/output2.PNG" width="800" />
 </p>
+
+
+### Agent Graph Flow
+<p align="center">
+  <img src="architectural_diagrams/graph-flow-diagram.png" width="800" />
+</p>
+
+
+👀 **For more Architectural C4 Diagrams check out 'architectural_diagrams' folder** 
