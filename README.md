@@ -8,6 +8,13 @@ Unlike generic AI writing tools, this platform **automatically researches simila
 
 ---
 
+## 📦 Installation & Setup
+
+For detailed installation and environment setup instructions,  
+👉 **[Click here to view the Setup Guide](proposal/README.md)**
+
+---
+
 ## 🚀 Overview
 
 The **AI Consulting & Service Proposal Generator** is designed to eliminate manual research and repetitive proposal drafting.
