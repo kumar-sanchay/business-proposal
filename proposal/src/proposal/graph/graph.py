@@ -14,7 +14,7 @@ from proposal.indexing.vectorstore import get_retriever
 
 
 LOGGER = logging.getLogger(__name__)
-MAX_DOC_SEARCH_ITERATION = 2
+MAX_DOC_SEARCH_ITERATION = 1
 
 
 def build_graph():
@@ -23,7 +23,7 @@ def build_graph():
     tavily_search = TavilySearch(max_results=2)
 
     tavily_search_results = TavilySearchResults(
-        max_results=3,
+        max_results=2,
         search_depth="advanced",
         include_raw_content=True,
     )

@@ -9,7 +9,7 @@ def get_client_search_queries(llm: BaseChatModel):
 
     system_prompt = """
         You are an expert consulting researcher.
-        Your task is to generate a list of 2 web search queries list that will be used to find about the client and
+        Your task is to generate strictly 2 web search queries list that will be used to find about the client and
         client's industry as given below.
     """
 

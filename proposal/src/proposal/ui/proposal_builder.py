@@ -8,7 +8,7 @@ from proposal.core.graph_state import UserRequirement, ClientInfo
 from proposal.graph.graph import run_graph
 
 st.set_page_config(
-    page_title="AI Consulting Proposal Builder (Beta)",
+    page_title="AI Consulting Proposal Builder",
     layout="wide",
     page_icon="📑"
 )
@@ -42,7 +42,11 @@ st.markdown("""
 def word_limit(text, max_words):
     return len(text.split()) <= max_words
 
-st.title("🤖 AI Consulting Proposal Builder")
+st.title("🤖 AI Consulting Proposal Builder (Beta)")
+st.markdown(
+    "⚠️ **Note:** This is a beta version of the app. To ensure smooth performance with limited LLM resources, "
+    "please simplify or shorten your inputs if you encounter any issues."
+)
 
 left_col, right_col = st.columns(2)
 
@@ -55,8 +59,8 @@ with left_col:
     if st.button("📥 Load Sample Data"):
         st.session_state["problem_statement"] = "The client's legacy system cannot handle real-time transaction analysis efficiently."
         st.session_state["proposal_goal"] = "Deploy an AI-powered platform to automate proposal generation with high accuracy."
-        st.session_state["client_name"] = "Infosys"
-        st.session_state["industry"] = "Technology & SaaS"
+        st.session_state["client_name"] = "Acme Financial Services"
+        st.session_state["industry"] = "Banking & Financial Services"
         st.session_state["approach"] = "Use agentic AI with RAG architecture for document retrieval and section-wise proposal generation."
         st.session_state["timeline"] = "6 weeks"
         st.session_state["scope_exclusions"] = "Excludes client-side integration and post-deployment training."
@@ -224,7 +228,7 @@ with right_col:
                                     f"✅ **{section}** → {previous_node} completed"
                                 )
                             section_status_placeholder.markdown(
-                                f"🔄 **{section}** → {node} running"
+                                f"🔄 **{section}** → {node_msg_map[node]}"
                             )
                             previous_node = node
                     except StopIteration as e:

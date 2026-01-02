@@ -16,7 +16,7 @@ def get_section_search_queries(llm: BaseChatModel):
     human_prompt = """
         You are given a problem statement describing a real-world consulting need.
 
-        Generate strictly 3 short web search queries to find real consulting documents
+        Generate strictly 2 short web search queries to find real consulting documents
         (strictly only PDFs), not blogs or definitions.
 
         Do not include full sentences.
